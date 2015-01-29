@@ -22,7 +22,7 @@ public class NavigationDrawerFragment extends Fragment {
     private static final String KEY_USER_LEARNED_DRAWER = "userLearnedDrawer";
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
-
+    private View containerView; // a View which  represent the navigation_drawer
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
@@ -48,24 +48,36 @@ public class NavigationDrawerFragment extends Fragment {
     /**
      * hooks up the hosting activity drawerlayout and the toolbar
      *
+     * @param fragmentId the id of the navigation drawer fragment
      * @param drawerLayout the hosting activity's drawer layout view
      * @param toolbar      the hosting activity toolbar
      */
-    public void setup(DrawerLayout drawerLayout, Toolbar toolbar) {
+    public void setup(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar) {
+
+
+        containerView = getActivity().findViewById(fragmentId);
+
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
 
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-
+                if (!mUserLearnedDrawer) mUserLearnedDrawer = true;
+                saveToPreferences(getActivity(), KEY_USER_LEARNED_DRAWER, String.valueOf(mUserLearnedDrawer));
+                getActivity().invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+                getActivity().invalidateOptionsMenu();
             }
         };
+
+        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
+            mDrawerLayout.openDrawer(containerView);
+        }
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }

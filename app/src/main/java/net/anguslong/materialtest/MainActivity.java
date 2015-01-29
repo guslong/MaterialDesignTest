@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
 
         // pass reference to the drawer_layout from the activity_main and the app_bar to the navigationdrawerfragment, in order to hook it up
-        drawerFragment.setup((DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
+        drawerFragment.setup(R.id.fragment_navigation_drawer,(DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
 
     }
