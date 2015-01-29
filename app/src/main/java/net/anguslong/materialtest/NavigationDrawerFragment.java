@@ -80,6 +80,13 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        mDrawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mDrawerToggle.syncState();
+            }
+        });
     }
 
     public static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {
