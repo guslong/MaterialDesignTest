@@ -20,10 +20,15 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // create the app_bar (a Lollipop toolbar to replace the ActionBar)
         toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
+
+        // pass reference to the drawer_layout from the activity_main and the app_bar to the navigationdrawerfragment, in order to hook it up
         drawerFragment.setup((DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
 

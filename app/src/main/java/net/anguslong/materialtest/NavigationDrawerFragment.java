@@ -33,6 +33,11 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
 
+    /**
+     * hooks up the hosting activity drawerlayout and the toolbar
+     * @param drawerLayout the hosting activity's drawer layout view
+     * @param toolbar the hosting activity toolbar
+     */
     public void setup(DrawerLayout drawerLayout, Toolbar toolbar) {
         mDrawerLayout = drawerLayout;
         mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
