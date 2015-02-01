@@ -52,7 +52,7 @@ public class NavigationDrawerFragment extends Fragment {
      * @param drawerLayout the hosting activity's drawer layout view
      * @param toolbar      the hosting activity toolbar
      */
-    public void setup(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar) {
+    public void setup(int fragmentId, DrawerLayout drawerLayout, final Toolbar toolbar) {
 
 
         containerView = getActivity().findViewById(fragmentId);
@@ -73,6 +73,11 @@ public class NavigationDrawerFragment extends Fragment {
                 super.onDrawerClosed(drawerView);
                 getActivity().invalidateOptionsMenu();
             }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                // change the alpha of the toolbar TODO
+            }
         };
 
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
@@ -87,6 +92,9 @@ public class NavigationDrawerFragment extends Fragment {
                 mDrawerToggle.syncState();
             }
         });
+
+        //mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.primaryColor));
+
     }
 
     public static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {

@@ -18,7 +18,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_app);
+        setContentView(R.layout.activity_main);
 
         // create the app_bar (a Lollipop toolbar to replace the ActionBar)
         toolbar = (Toolbar)findViewById(R.id.app_bar);
@@ -33,6 +33,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     }
+
 
 
     @Override
