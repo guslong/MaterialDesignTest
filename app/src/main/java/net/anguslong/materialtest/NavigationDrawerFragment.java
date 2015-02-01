@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -26,8 +30,8 @@ public class NavigationDrawerFragment extends Fragment {
     private View containerView; // a View which  represent the navigation_drawer
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private View recyclerView;
-
+    private RecyclerView recyclerView;
+    private RVAdapter adapter;
     public NavigationDrawerFragment() {
         // Required empty public constructor
     }
@@ -44,12 +48,26 @@ public class NavigationDrawerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-
         recyclerView = (RecyclerView) layout.findViewById(R.id.recycler_view);
-
+        adapter = new RVAdapter(getActivity(), getData());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return layout;
     }
 
+    public static List<Information> getData() {
+        List<Information> data = new ArrayList<>();
+        int[] icons = {R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher};
+        String[] titles={"Inbox", "Sent", "Drafts", "Trash"};
+        for (int i=0;i<titles.length && i<icons.length; i++) {
+            Information current = new Information();
+            current.iconId = icons[i];
+            current.title = titles[i];
+            data.add(current);
+
+        }
+        return data;
+    }
 
     /**
      * hooks up the hosting activity drawerlayout and the toolbar

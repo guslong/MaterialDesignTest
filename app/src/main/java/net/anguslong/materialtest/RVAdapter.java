@@ -17,11 +17,14 @@ import java.util.List;
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
 
     private LayoutInflater inflater;
+    private Context context;
 
     List<Information> data = Collections.emptyList();
 
-    public RVAdapter(Context context){
+    public RVAdapter(Context context, List<Information> data){
+        this.context = context;
         inflater = LayoutInflater.from(context);
+        this.data = data;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 0;
+        return data.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
