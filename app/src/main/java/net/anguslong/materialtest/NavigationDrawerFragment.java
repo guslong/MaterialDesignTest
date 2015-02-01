@@ -74,10 +74,7 @@ public class NavigationDrawerFragment extends Fragment {
                 getActivity().invalidateOptionsMenu();
             }
 
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                // change the alpha of the toolbar TODO
-            }
+
         };
 
         if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
@@ -93,7 +90,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-        //mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.primaryColor));
+       // mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.primaryColor));
 
     }
 
