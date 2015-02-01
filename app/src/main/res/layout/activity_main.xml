@@ -7,28 +7,24 @@
     android:fitsSystemWindows="false">
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/appBackground"
         android:fitsSystemWindows="false"
-        android:background="@color/accentColor"
         tools:context="net.anguslong.materialtest.MainActivity">
 
-        <include
-
-            layout="@layout/app_bar" />
-
+        <include layout="@layout/app_bar" />
 
     </RelativeLayout>
 
     <fragment
         android:id="@+id/fragment_navigation_drawer"
+        android:name="net.anguslong.materialtest.NavigationDrawerFragment"
         android:layout_width="@dimen/nav_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:layout="@layout/fragment_navigation_drawer"
-        android:name="net.anguslong.materialtest.NavigationDrawerFragment"
         tools:layout="@layout/fragment_navigation_drawer">
 
     </fragment>
